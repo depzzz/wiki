@@ -35,3 +35,9 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def Filter(string, substr):
+    """
+    Checks and Returns strings which contain a given substring
+    """
+    return [s for s in string if substr.lower() in s.lower()]

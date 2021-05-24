@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: white;
+    color: #888;
 }
 
 code {
@@ -32,6 +33,7 @@ textarea {
     background-color: #f0f0f0;
     height: 100vh;
     padding: 20px;
+    color: #000;
 }
 
 .sidebar h2 {
@@ -47,7 +49,7 @@ textarea {
 
 .error h1 {
     color: #888;
-    font-size: 5rem;
+    font-size: 2rem;
     display: inline-block;
     padding-right: 12px;
 	animation: type .5s alternate infinite;
@@ -56,4 +58,35 @@ textarea {
 @keyframes type{
     from{box-shadow: inset -3px 0px 0px #888;}
     to{box-shadow: inset -3px 0px 0px transparent;}
+}
+
+form {
+    margin: 20px 0;
+}
+
+#id_query {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #a51c30;
+}
+
+a:hover {
+    color: #a51c30;
+    text-decoration-line: underline;
+    text-underline-offset: 3px;
+    text-decoration-style: solid;
+}
+
+input[type=submit] {
+    background-color: hsla(351, 71%, 38%, 0.8);
+    border-radius: 0;
+    border: 2px solid black;
+    color: whitesmoke;
+}
+
+input[type=submit]:hover {
+    background-color: hsla(351, 71%, 38%, 1);
 }
