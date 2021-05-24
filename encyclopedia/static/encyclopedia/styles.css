@@ -19,7 +19,7 @@ textarea {
 }
 
 .main {
-    padding: 10px;
+    padding: 0px 20px;
     position: relative;
 }
 
@@ -89,4 +89,24 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: hsla(351, 71%, 38%, 1);
+}
+
+label, input {
+    display: block;
+}
+
+#id_content {
+    height: 50vh;
+}
+
+input[class=save] {
+    background-color: hsla(120, 56%, 20%, 0.8);
+    border-radius: 0;
+    border: 2px solid black;
+    color: whitesmoke;
+    padding: 0 20px;
+}
+
+input[class=save]:hover {
+    background-color: hsla(120, 56%, 20%, 1);
 }
