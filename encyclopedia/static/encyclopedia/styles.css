@@ -19,7 +19,7 @@ textarea {
 }
 
 .main {
-    padding: 0px 20px;
+    padding: 10px 30px;
     position: relative;
 }
 
@@ -111,7 +111,7 @@ input[class=save]:hover {
     background-color: hsla(120, 56%, 20%, 1);
 }
 
-.edit, a[class=edit] {
+input[class=edit], a[class=edit] {
     background-color: hsla(279, 71%, 16%, 0.8);
     border-radius: 0;
     border: 2px solid black;
@@ -120,6 +120,6 @@ input[class=save]:hover {
     text-decoration: none;
 }
 
-.edit, a[class=edit]:hover {
+input[class=edit]:hover, a[class=edit]:hover {
     background-color: hsla(279, 71%, 16%, 1);
 }

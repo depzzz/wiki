@@ -7,7 +7,9 @@
 {% block body %}
     <div class="container">
         {{ entry | safe }}
-    </div>
 
-    <a href="{% url 'edit' title=title%}" class="edit" role="button">Edit Page</a>
+        <br>
+
+        <a href="{% url 'edit' title=title%}" class="edit" role="button">Edit</a>
+    </div>
 {% endblock %}

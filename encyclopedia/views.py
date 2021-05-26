@@ -3,7 +3,12 @@ from django.shortcuts import redirect, render
 from . import util
 from django import forms
 import random
+from markdown2 import Markdown
 
+# Global Declaration
+markdowner = Markdown()
+
+# Forms
 class SearchForm(forms.Form):
     query = forms.CharField(label='Enter Search Query',max_length=100,required=True)
 
@@ -35,7 +40,7 @@ def view(request,entry):
     # take user to entry wiki page
     else:
         return render(request, "encyclopedia/view.html", {
-            "entry" : util.get_entry(entry),
+            "entry" : markdowner.convert(util.get_entry(entry)),
             "title" : entry,
             "SearchForm" : SearchForm
         })
@@ -95,7 +100,7 @@ def create(request):
             # Save the Entry
             else:
                 save_entry = util.save_entry(title,content)
-                return redirect('index')
+                return redirect('view',entry=title)
     # render create.html 
     else:
         return render(request, "encyclopedia/create.html", {
@@ -132,6 +137,6 @@ def random_entry(request):
 
     return render(request, "encyclopedia/view.html", {
         "title" : randomEntry,
-        "entry" : content,
+        "entry" : markdowner.convert(content),
         "SearchForm" : SearchForm
     })
