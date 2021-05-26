@@ -12,6 +12,11 @@ class CreateForm(forms.Form):
                             widget=forms.Textarea,
                             required=True)
 
+class EditForm(forms.Form):
+    content = forms.CharField(label='Enter Content',
+                            widget=forms.Textarea,
+                            required=True)
+                            
 def index(request):
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries(),
@@ -89,10 +94,31 @@ def create(request):
             # Save the Entry
             else:
                 save_entry = util.save_entry(title,content)
-                return HttpResponse("Hello World!")
+                return redirect('index')
     # render create.html 
     else:
         return render(request, "encyclopedia/create.html", {
             "SearchForm" : SearchForm,
             "CreateForm" : CreateForm
         })
+
+def edit(request,title):
+    if request.method == "GET":
+        content = util.get_entry(title)
+        return render(request,"encyclopedia/edit.html",{
+            "EditForm" : EditForm({"content" : content}),
+            "title" : title
+        })
+    else:
+        form = EditForm(request.POST)
+
+        # check whether its valid
+        if form.is_valid():
+            entries = util.list_entries()
+            content = form.cleaned_data['content']
+
+            # if query is already present in entries, then take user to query wiki page
+            present = [filename for filename in entries if title.lower() in filename.lower()]
+            if len(present) == 1 and title.lower() == present[0].lower():
+                util.save_entry(title,content)
+                return redirect('view',entry=title)

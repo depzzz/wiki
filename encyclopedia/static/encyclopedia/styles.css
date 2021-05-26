@@ -110,3 +110,16 @@ input[class=save] {
 input[class=save]:hover {
     background-color: hsla(120, 56%, 20%, 1);
 }
+
+.edit, a[class=edit] {
+    background-color: hsla(279, 71%, 16%, 0.8);
+    border-radius: 0;
+    border: 2px solid black;
+    color: whitesmoke;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+.edit, a[class=edit]:hover {
+    background-color: hsla(279, 71%, 16%, 1);
+}
