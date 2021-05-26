@@ -2,6 +2,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from . import util
 from django import forms
+import random
 
 class SearchForm(forms.Form):
     query = forms.CharField(label='Enter Search Query',max_length=100,required=True)
@@ -103,6 +104,7 @@ def create(request):
         })
 
 def edit(request,title):
+    # render edit page
     if request.method == "GET":
         content = util.get_entry(title)
         return render(request,"encyclopedia/edit.html",{
@@ -122,3 +124,14 @@ def edit(request,title):
             if len(present) == 1 and title.lower() == present[0].lower():
                 util.save_entry(title,content)
                 return redirect('view',entry=title)
+
+def random_entry(request):
+    entries = util.list_entries()
+    randomEntry = random.choice(entries)
+    content = util.get_entry(randomEntry)
+
+    return render(request, "encyclopedia/view.html", {
+        "title" : randomEntry,
+        "entry" : content,
+        "SearchForm" : SearchForm
+    })
